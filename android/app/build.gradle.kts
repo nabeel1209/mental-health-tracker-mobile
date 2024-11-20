@@ -18,7 +18,6 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
-    aaptOptions { cruncherEnabled = false }
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.example.mental_health_tracker"
@@ -31,16 +30,16 @@ android {
     }
 
     signingConfigs {
-        release {
-                storeFile file("../../release-keystore.jks")
-                storePassword = "$System.env.KEY_PASSWORD"
-                keyAlias = "release"
-                keyPassword = "$System.env.KEY_PASSWORD"
+        create("release") {
+            storeFile = file("../../release-keystore.jks")
+            storePassword = System.getenv("KEY_PASSWORD")
+            keyAlias = "release"
+            keyPassword = System.getenv("KEY_PASSWORD")
         }
     }
     buildTypes {
-        release {
-            signingConfig signingConfigs.release
+        getByName("release") {
+            signingConfig = signingConfigs.getByName("release")
         }
     }
 }
