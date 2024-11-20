@@ -37,7 +37,7 @@ android {
                 keyAlias = "release"
                 keyPassword = "$System.env.KEY_PASSWORD"
         }
-}
+    }
     buildTypes {
         release {
             signingConfig signingConfigs.release
