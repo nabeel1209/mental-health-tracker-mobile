@@ -32,7 +32,10 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: "stable"
-
+      
+      - name: Flutter upgrade
+        run: flutter upgrade --force    
+        
       - name: Get packages
         run: flutter pub get
 
